@@ -1,36 +1,121 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 
+type PartyState = 'initial' | 'creating' | 'joining' | 'inParty'
+
 function App() {
-  // const [count, setCount] = useState(0) 
+  const [partyState, setPartyState] = useState<PartyState>('initial')
+  const [partyCode, setPartyCode] = useState('')
   
+  const handleCreateParty = async () => {
+    setPartyState('creating')
+    // TODO: Implement party creation logic
+  }
+
+  const handleJoinParty = async () => {
+    if (!partyCode.trim()) return
+    setPartyState('joining')
+    // TODO: Implement party joining logic
+  }
+
   return (
-    <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-red-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
-        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
-          <div className="max-w-md mx-auto">
-            <div className="divide-y divide-gray-200">
-              <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
-                <h1 className="text-3xl font-bold text-red-600 mb-8">YouTube Party</h1>
-                <button className="w-full bg-red-600 text-white rounded-lg px-4 py-2 hover:bg-red-700 transition-colors">
-                  Create Party
+    <div className="container">
+      <header>
+        <h1>🎉 YouTube Party</h1>
+        <p className="subtitle">Watch videos together with friends in real-time</p>
+      </header>
+
+      <main>
+        {partyState === 'initial' && (
+          <div className="party-form">
+            <h2>Get Started</h2>
+            <div className="button-group">
+              <div className="create-section">
+                <p>Create a new party room to watch videos with friends</p>
+                <button
+                  onClick={handleCreateParty}
+                  className="primary-button"
+                >
+                  🎥 Create New Party
                 </button>
-                <div className="mt-4">
-                  <input
-                    type="text"
-                    placeholder="Enter Party Code"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500"
-                  />
-                  <button className="w-full mt-2 bg-gray-600 text-white rounded-lg px-4 py-2 hover:bg-gray-700 transition-colors">
-                    Join Party
-                  </button>
-                </div>
+              </div>
+              
+              <div className="divider">
+                <span>OR</span>
+              </div>
+              
+              <div className="join-section">
+                <p>Join an existing party with a code</p>
+                <input
+                  type="text"
+                  value={partyCode}
+                  onChange={(e) => setPartyCode(e.target.value)}
+                  placeholder="Enter your party code"
+                  className="input-field"
+                />
+                <button
+                  onClick={handleJoinParty}
+                  className="secondary-button"
+                  disabled={!partyCode.trim()}
+                >
+                  👥 Join Party
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        )}
+
+        {partyState === 'creating' && (
+          <div className="loading">
+            <div className="spinner"></div>
+            <h3>Creating your party room...</h3>
+            <p>This will only take a moment</p>
+          </div>
+        )}
+
+        {partyState === 'joining' && (
+          <div className="loading">
+            <div className="spinner"></div>
+            <h3>Joining party room...</h3>
+            <p>Connecting you to your friends</p>
+          </div>
+        )}
+
+        {partyState === 'inParty' && (
+          <div className="party-container">
+            <div className="video-section">
+              <div className="video-placeholder">
+                <h2>Welcome to YouTube Party! 🎉</h2>
+                <p className="lead">Share moments together, no matter the distance</p>
+                <div className="instructions">
+                  <h3>Quick Start Guide:</h3>
+                  <ol>
+                    <li>Open any YouTube video you want to watch</li>
+                    <li>Click the YouTube Party extension icon in your browser</li>
+                    <li>Share your party code with friends to watch together</li>
+                  </ol>
+                </div>
+                <p className="note">The video player will appear here once connected</p>
+              </div>
+            </div>
+
+            <div className="chat-section">
+              <h2>💬 Party Chat</h2>
+              <div className="chat-messages">
+                <p className="empty-chat">No messages yet. Be the first to say hello!</p>
+              </div>
+              <div className="chat-input">
+                <input
+                  type="text"
+                  placeholder="Type your message..."
+                  className="input-field"
+                />
+                <button className="send-button">Send</button>
+              </div>
+            </div>
+          </div>
+        )}
+      </main>
     </div>
   )
 }
