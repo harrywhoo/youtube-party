@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Youtube Party",
+    "version": "1.0.0",
+    "description": "A Youtube Party Extension",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": ["activeTab", "scripting"],
+    "host_permissions": ["https://www.youtube.com/*"]
+
+}
