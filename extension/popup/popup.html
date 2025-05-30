@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Party</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 YouTube Party</h1>
+    
+    <div id="notInParty" class="section">
+      <h2>Create or Join a Party</h2>
+      <div class="button-group">
+        <button id="createParty" class="primary-button">Create New Party</button>
+        <div class="divider">OR</div>
+        <input type="text" id="partyCode" placeholder="Enter party code" class="input-field">
+        <button id="joinParty" class="secondary-button">Join Party</button>
+      </div>
+    </div>
+
+    <div id="inParty" class="section hidden">
+      <div class="party-info">
+        <h2>Party Code: <span id="currentPartyCode"></span></h2>
+        <p>Share this code with your friends!</p>
+      </div>
+      <div class="members-list">
+        <h3>Party Members</h3>
+        <ul id="membersList"></ul>
+      </div>
+      <button id="leaveParty" class="danger-button">Leave Party</button>
+    </div>
+
+    <div id="error" class="error-message hidden"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 

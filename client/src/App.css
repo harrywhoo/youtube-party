@@ -132,3 +132,78 @@ header {
     grid-template-columns: 1fr;
   }
 }
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 12px;
+  border-radius: 4px;
+  margin: 20px auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.party-info {
+  background-color: #e3f2fd;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.party-info h2 {
+  color: #1976d2;
+  margin: 0 0 10px 0;
+  font-size: 1.5em;
+}
+
+.party-info p {
+  color: #424242;
+  margin: 0;
+}
+
+.chat-message {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-user {
+  font-weight: bold;
+  color: #1976d2;
+  margin-right: 8px;
+}
+
+.chat-text {
+  color: #424242;
+  margin: 4px 0;
+}
+
+.chat-time {
+  font-size: 0.8em;
+  color: #757575;
+  align-self: flex-end;
+}
+
+.send-button {
+  background-color: #1976d2;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.send-button:hover {
+  background-color: #1565c0;
+}
+
+.send-button:disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
